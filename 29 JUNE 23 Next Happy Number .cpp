@@ -1,3 +1,5 @@
+https://practice.geeksforgeeks.org/problems/next-happy-number4538/1
+
 int isHappy(int n){
         if(n==1||n==7)
         {
