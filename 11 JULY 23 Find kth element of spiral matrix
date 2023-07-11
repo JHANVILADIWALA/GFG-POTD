@@ -1,0 +1,65 @@
+https://practice.geeksforgeeks.org/problems/find-nth-element-of-spiral-matrix/1
+
+class Solution
+{
+    public:
+    /*You are required to complete this method*/
+    int findK(int a[MAX][MAX],int n,int m,int k)
+    {
+ 		int sr=0, sc=0, er=n, ec=m;
+ 		int ckt=0;
+ 		int ans;
+ 		bool found = false;
+ 		while(true){
+ 		    
+ 		    //first row
+ 		    for(int i=sc; i<ec; i++){
+ 		        ckt++;
+ 		        if(ckt==k){
+ 		            ans=a[sr][i];
+ 		            found=true;
+ 		            break;
+ 		        }
+ 		    }
+ 		    if(found==true)break;
+ 		    ec--;
+ 		    
+ 		    //last col
+ 		    for(int i=sr+1; i<er; i++){
+ 		        ckt++;
+ 		        if(ckt==k){
+ 		            ans=a[i][ec];
+ 		            found=true;
+ 		            break;
+ 		        }
+ 		    }
+ 		    if(found==true)break;
+ 		    er--;
+ 		    
+ 		    //last row
+ 		    for(int i=ec-1; i>=sc; i--){
+ 		        ckt++;
+ 		        if(ckt==k){
+ 		            ans=a[er][i];
+ 		            found=true;
+ 		            break;
+ 		        }
+ 		    }
+ 		    if(found==true)break;
+ 		    sc++;
+ 		    
+ 		    //first col
+ 		    for(int i=er-1; i>sr; i--){
+ 		        ckt++;
+ 		        if(ckt==k){
+ 		            ans=a[i][sc-1];
+ 		            found=true;
+ 		            break;
+ 		        }
+ 		    }
+ 		     if(found==true)break;
+ 		     sr++;
+ 		}
+ 		return ans;
+    }
+};
