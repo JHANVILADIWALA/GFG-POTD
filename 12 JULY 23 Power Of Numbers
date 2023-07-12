@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/power-of-numbers-1587115620/1
+
+long long power(long long a,long long b)
+    {
+    // long long mod = 1e9+7;
+       long long res=1;
+        
+       while(b){
+           if(b&1){ //b odd
+               res=(res*a)%mod;
+               b--;
+           }
+           else{
+               a = (a*a)%mod; //sqauring a
+               b>>=1; //taking half of b
+           }
+       }
+       return res;
+    }
