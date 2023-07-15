@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1
+
+void deleteMid(stack<int>&s, int n)
+    {
+        int rem = n/2;
+        stack<int>st;
+        while(rem--){
+            st.push(s.top());
+            s.pop();
+        }
+        s.pop();
+        while(st.size()){
+            s.push(st.top());
+            st.pop();
+        }
+    }
