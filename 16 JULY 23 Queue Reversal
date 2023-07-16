@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/queue-reversal/1
+
+queue<int> rev(queue<int> q)
+    {
+       vector<int>v;
+       queue<int>ans;
+       while(!q.empty()){
+           v.push_back(q.front());
+           q.pop();
+       }
+       reverse(v.begin(), v.end());
+       for(int i=0; i<v.size(); i++){
+           q.push(v[i]);
+       }
+       return q;
+    }
