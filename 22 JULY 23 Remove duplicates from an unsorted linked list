@@ -1,0 +1,29 @@
+https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+
+class Solution
+{
+    public:
+    //Function to remove duplicates from unsorted linked list.
+    Node * removeDuplicates( Node *head) 
+    {
+       vector<int>freq(1e4+10, 0);
+       Node *prev=NULL;
+       Node *cur=head;
+       
+       //traversing on linkedlist
+       while(cur!=NULL){
+           
+           freq[cur->data]++; //increase the ckt
+           int ckt=freq[cur->data];
+           
+           if(ckt>1){ //means remove the node
+               prev->next=cur->next;
+           }
+           else prev=cur;
+           
+           cur=cur->next;
+           
+       }
+       return head;
+    }
+};
