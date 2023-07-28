@@ -1,0 +1,47 @@
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+
+class Solution{
+    public:
+        Node* LCA(Node *root, int n1, int n2)
+        {
+            //find the path from root to both nodes and store in vector
+            //then find the last common element in both paths
+            
+            vector<Node*>patha,pathb;
+            bool founda=0,foundb=0;
+            
+            function<void(Node *)>traverse=[&](Node *node){
+                if(node==nullptr)return;
+                
+                if(!founda)patha.push_back(node);
+                if(!foundb)pathb.push_back(node);
+                
+                if(node->data==n1)founda=1;
+                if(node->data==n2)foundb=1;
+                
+                //recursive call
+                traverse(node->left);
+                traverse(node->right);
+                
+                //while returning
+                if(!founda)patha.pop_back();
+                if(!foundb)pathb.pop_back();
+                
+            };
+            
+            //getting path vectors for a and b
+            traverse(root);
+            
+            Node*ans=root; //because root is common in worse case
+            
+            int ind=0;
+            
+            while(ind<patha.size() && ind<pathb.size()){
+                if(patha[ind]==pathb[ind]){
+                    ans=patha[ind++];
+                }
+                else break;
+            }
+            return ans;
+        }
+};
