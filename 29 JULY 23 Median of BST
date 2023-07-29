@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/median-of-bst/1
+
+void inorder(Node* node, vector<int>& sortedList) {
+    if (node == NULL) return;
+    inorder(node->left, sortedList);
+    sortedList.push_back(node->data);
+    inorder(node->right, sortedList);
+}
+float findMedian(struct Node *root)
+{
+      vector<int> sortedList;
+    inorder(root, sortedList);
+
+    int n = sortedList.size();
+    if (n % 2 == 1) {
+        // Odd number of elements -> n/2th is the median
+        return sortedList[n / 2];
+    } else {
+        // Even number of elements -> average of the two middle elements is the median
+        return (sortedList[n / 2] + sortedList[n / 2 - 1]) / 2.0;
+    }
+}
