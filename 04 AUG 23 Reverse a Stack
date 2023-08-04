@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/reverse-a-stack/1
+
+ void rec(stack<int>&s, queue<int>&q){
+        if(s.empty())return;
+        
+        //add all elements to queue recursively
+        q.push(s.top());
+        s.pop();
+        rec(s,q);
+        
+        //add all to stack
+        s.push(q.front());
+        q.pop();
+        
+    }
+    void Reverse(stack<int> &St){
+        queue<int>q;
+        rec(St,q); //puts 
+    }
