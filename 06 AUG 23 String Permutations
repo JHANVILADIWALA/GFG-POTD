@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string-1587115620/1
+
+void rec(string s, int ind, vector<string>&ans){
+        if(ind==s.size()){
+            ans.push_back(s);
+            return;
+        }
+        for(int i=ind; i<s.size(); i++){
+            swap(s[i],s[ind]);
+            rec(s,ind+1,ans);
+            swap(s[i],s[ind]);
+        }
+    }
+    vector<string> permutation(string s)
+    {
+        vector<string>ans;
+        // string temp=s;
+        rec(s,0,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
